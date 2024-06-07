@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AIMTechToolkit (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AIMTechToolkit (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

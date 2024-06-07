@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+	x:Class="AIMTechToolkit.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="using:AIMTechToolkit"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	x:Name="mainWindow1"
+	mc:Ignorable="d">
+	<Window.SystemBackdrop>
+		<MicaBackdrop />
+	</Window.SystemBackdrop>
+
+	<Grid x:Name="AppGrid1" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid
+			x:Name="AppTitleBar1"
+			Grid.Row="0"
+			Height="48"
+			Margin="8,0"
+			Padding="0"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Top"
+			Background="Transparent">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<ImageIcon
+				x:Name="AppIcon1"
+				Grid.Column="0"
+				Width="16"
+				Height="16"
+				Margin="8,0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center"
+				Source="Assets/AIMTechToolkit.ico" />
+			<TextBlock
+				x:Name="AppTitleTextBlock1"
+				Grid.Column="1"
+				Margin="4,0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center"
+				MaxLines="1"
+				Style="{ThemeResource CaptionTextBlockStyle}"
+				Text="{x:Bind Title}"
+				TextTrimming="None"
+				TextWrapping="NoWrap" />
+			<Button
+				x:Name="AppTitleBarLoginBtn1"
+				Grid.Column="2"
+				MaxWidth="160"
+				Margin="0"
+				HorizontalAlignment="Right"
+				Background="{ThemeResource SystemFillColorSuccessBrush}"
+				Click="AppTitleBarLoginBtn1_Click"
+				Content="Not Logged In"
+				Foreground="White" />
+		</Grid>
+
+		<Grid
+			x:Name="AppContentGrid1"
+			Grid.Row="1"
+			Background="Transparent">
+			<NavigationView
+				x:Name="navigationView1"
+				AlwaysShowHeader="True"
+				IsBackButtonVisible="Visible"
+				IsBackEnabled="True"
+				IsPaneOpen="False"
+				IsPaneToggleButtonVisible="True"
+				IsPaneVisible="True"
+				IsSettingsVisible="True"
+				ItemInvoked="navigationView1_ItemInvoked"
+				PaneDisplayMode="Left"
+				PaneTitle="Menu">
+				<NavigationView.MenuItems>
+					<NavigationViewItemHeader Content="General" />
+					<NavigationViewItem
+						x:Name="navItem1"
+						Content="Home"
+						IsSelected="True"
+						Tag="Home">
+						<NavigationViewItem.Icon>
+							<ImageIcon Source="Assets/Icon-NavigationView-Home.svg" />
+						</NavigationViewItem.Icon>
+					</NavigationViewItem>
+					<NavigationViewItemSeparator />
+					<NavigationViewItemHeader Content="Device Management" />
+					<NavigationViewItem
+						x:Name="DevicesNavItem"
+						Content="Devices"
+						Tag="Devices">
+						<NavigationViewItem.Icon>
+							<ImageIcon Source="Assets/Icons/Icon-NavigationView-Devices.svg" />
+						</NavigationViewItem.Icon>
+					</NavigationViewItem>
+				</NavigationView.MenuItems>
+				<NavigationView.Content>
+					<ScrollViewer>
+						<Frame
+							x:Name="AppContentFrame1"
+							Margin="24"
+							IsNavigationStackEnabled="True" />
+					</ScrollViewer>
+				</NavigationView.Content>
+				<NavigationView.FooterMenuItems>
+					<NavigationViewItemHeader Content="Account" />
+					<NavigationViewItem
+						x:Name="accountNavItem1"
+						Content="Login"
+						SelectsOnInvoked="False"
+						Tag="Login">
+						<NavigationViewItem.Icon>
+							<ImageIcon x:Name="accountNavItemIcon1" Source="ms-appx:///Assets/Icons/microsoft.accountpicker.aad.svg" />
+						</NavigationViewItem.Icon>
+					</NavigationViewItem>
+					<NavigationViewItemSeparator />
+				</NavigationView.FooterMenuItems>
+			</NavigationView>
+			<InfoBar
+				x:Name="AppTitleBarInfoBar1"
+				Title="Information"
+				Margin="40,0,40,24"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Bottom"
+				IsClosable="True"
+				IsIconVisible="True"
+				IsOpen="False"
+				Message="Not Logged In"
+				Severity="Informational" />
+		</Grid>
+	</Grid>
+</Window>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+	x:Class="AIMTechToolkit.Pages.HomePage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="using:AIMTechToolkit.Pages"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	x:Name="homePage1"
+	Background="{ThemeResource SystemControlPageBackgroundTransparentBrush}"
+	mc:Ignorable="d">
+
+	<Grid>
+		<ScrollViewer>
+			<StackPanel Orientation="Vertical" Spacing="4" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+				<Button
+					x:Name="testBtn1"
+					Margin="4"
+					Click="testBtn1_Click"
+					Content="Test Button 1" />
+				<Grid
+					Width="400"
+					Height="300"
+					Padding="12"
+					Background="{ThemeResource SmokeFillColorDefaultBrush}"
+					CornerRadius="8">
+					<StackPanel Orientation="Vertical" Spacing="4">
+						<TextBlock
+							Foreground="White"
+							Style="{ThemeResource HeaderTextBlockStyle}"
+							Text="Header" />
+						<TextBlock
+							Foreground="White"
+							Style="{ThemeResource SubheaderTextBlockStyle}"
+							Text="Subheader" />
+					</StackPanel>
+				</Grid>
+				<Grid
+					Width="400"
+					Height="300"
+					Padding="12"
+					Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+					CornerRadius="8">
+					<StackPanel Orientation="Vertical" Spacing="4">
+						<TextBlock
+							Foreground="White"
+							Style="{ThemeResource TitleLargeTextBlockStyle}"
+							Text="Title (L)" />
+						<TextBlock
+							Foreground="White"
+							Style="{ThemeResource TitleTextBlockStyle}"
+							Text="Title" />
+						<TextBlock
+							Foreground="White"
+							Style="{ThemeResource SubtitleTextBlockStyle}"
+							Text="Subtitle" />
+					</StackPanel>
+				</Grid>
+				<Grid
+					Width="400"
+					Height="300"
+					Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+					CornerRadius="8" />
+				<Grid
+					Width="400"
+					Height="300"
+					Background="{ThemeResource ControlElevationBorderBrush}"
+					CornerRadius="8" />
+				<Grid
+					Width="400"
+					Height="300"
+					Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
+					CornerRadius="8" />
+				<Grid
+					Width="400"
+					Height="300"
+					Background="{ThemeResource ControlStrokeColorForStrongFillWhenOnImageBrush}"
+					CornerRadius="8" />
+			</StackPanel>
+		</ScrollViewer>
+	</Grid>
+</Page>
