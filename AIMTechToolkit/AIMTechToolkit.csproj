@@ -25,6 +25,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="app.manifest" />
     <None Remove="Assets\AIMTechToolkit.ico" />
     <None Remove="Assets\Icon-NavigationView-Home.svg" />
     <None Remove="Assets\Icons\Icon-NavigationView-Devices.svg" />
@@ -39,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="app.manifest" />
     <Content Include="Assets\SplashScreen.scale-200.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -80,6 +82,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Icon-NavigationView-Home.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Icons\AIMTechToolkit-Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Icons\Icon-NavigationView-Devices.svg">
@@ -203,6 +208,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\StoreLogo.backup.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\StoreLogo.scale-100.png">

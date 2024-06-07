@@ -26,7 +26,5 @@ namespace AIMTechToolkit
 		public static AppWindow InstanceAppWindow => m_window.AppWindow;
 		public static MainWindow InstanceMainWindow => m_window as MainWindow;
 		public static LoginDialogContentPage InstanceLoginPage { get; set; }
-
-		public static ConcurrentBag<string> DeviceCodeLoginData = new();
 	}
 }

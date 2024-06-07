@@ -41,7 +41,7 @@
 				Margin="8,0"
 				HorizontalAlignment="Left"
 				VerticalAlignment="Center"
-				Source="Assets/AIMTechToolkit.ico" />
+				Source="Assets/Icons/AIMTechToolkit-Logo.png" />
 			<TextBlock
 				x:Name="AppTitleTextBlock1"
 				Grid.Column="1"
@@ -59,7 +59,6 @@
 				MaxWidth="160"
 				Margin="0"
 				HorizontalAlignment="Right"
-				Background="{ThemeResource SystemFillColorSuccessBrush}"
 				Click="AppTitleBarLoginBtn1_Click"
 				Content="Not Logged In"
 				Foreground="White" />

@@ -14,7 +14,6 @@ namespace AIMTechToolkit
 			this.Title = "AIM Tech Toolkit";
 			this.ExtendsContentIntoTitleBar = true;
 			this.SetTitleBar(AppTitleBar1);
-			this.AppWindow.SetIcon("ms-appx:///Assets/AIMTechToolkit.ico");
 			this.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
 			this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
 
@@ -54,10 +53,8 @@ namespace AIMTechToolkit
 								NavigationService.Navigate(typeof(DevicesPage), DevicesPage.PageHeader);
 								break;
 							case "Login":
-								//NavigationViewLoginButtonClicked();
-								//InitiateLoginWithDeviceCode();
-								//await HandleDeviceCodeFlow(); // WORKS!!
-								NavigationService.Navigate(typeof(Controls.LoginDialogContentPage), "Login");
+								if (!MicrosoftLoginService.IsUserLoggedIn)
+								{ NavigationService.Navigate(typeof(Controls.LoginDialogContentPage), "Login"); }
 								break;
 							default:
 								break;
@@ -119,21 +116,22 @@ namespace AIMTechToolkit
 				try
 				{
 					var loggedInUserId = MicrosoftLoginService.GetAuthenticatedUser().UniqueId;
-					accountNavItem1.Content = loggedInUserId;
 
 					var stream = await MicrosoftGraphAPIService.GetUserPhotoAsStreamAsync(loggedInUserId);
 					var bitmapImage = new BitmapImage();
 					bitmapImage.SetSource(stream);
 
 					accountNavItemIcon1.Source = bitmapImage;
+					accountNavItem1.Content = MicrosoftLoginService.GetAuthenticatedUser().Account.Username;
 
 					var userProfilePicture = new PersonPicture
 					{
-						Initials = MicrosoftLoginService.GetAuthenticatedUser().Account.Username,
-						DisplayName = MicrosoftLoginService.GetAuthenticatedUser().Account.Username,
+						DisplayName = "User's Full Name",
 						ProfilePicture = bitmapImage
 					};
 
+					userProfilePicture.MaxHeight = 32;
+					userProfilePicture.MaxWidth = 160;
 					AppTitleBarLoginBtn1.Content = userProfilePicture;
 				}
 

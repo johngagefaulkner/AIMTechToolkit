@@ -21,7 +21,7 @@
 				<!--  Content body  -->
 				<TextBlock Style="{ThemeResource SubheaderTextBlockStyle}" Text="Device Code:" />
 				<TextBlock
-					x:Name="deviceCodeTextBlock1"
+					x:Name="deviceCodeTextBlock1" IsTextSelectionEnabled="True"
 					Style="{ThemeResource HeaderTextBlockStyle}"
 					Text="000000" />
 				<NavigationViewItemSeparator />

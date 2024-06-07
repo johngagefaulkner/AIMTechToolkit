@@ -55,20 +55,20 @@ namespace AIMTechToolkit.Services.Auth
 						// * The timeout specified by the server for the lifetime of this code (typically ~15 minutes) has been reached
 						// * The developing application calls the Cancel() method on a CancellationToken sent into the method.
 						//   If this occurs, an OperationCanceledException will be thrown (see catch below for more details).
-						Log.Info($"Device Code: {deviceCodeResult.UserCode}");
-						Log.Info($"Device Code Message: {deviceCodeResult.Message}");
-						Log.Info($"Device Code Verification Url: {deviceCodeResult.VerificationUrl}");
-
-						App.DeviceCodeLoginData.Clear();
-						App.DeviceCodeLoginData.Add(deviceCodeResult.UserCode);
-						App.DeviceCodeLoginData.Add(deviceCodeResult.Message);
-						App.DeviceCodeLoginData.Add(deviceCodeResult.VerificationUrl);
 						
-						LoginDialogContentPage.CurrentlyDisplayedLoginPage.UpdateLoginDataFromBag();
+						/*
+						 * Log.Info($"Device Code: {deviceCodeResult.UserCode}");
+						 * Log.Info($"Device Code Message: {deviceCodeResult.Message}");
+						 * Log.Info($"Device Code Verification Url: {deviceCodeResult.VerificationUrl}");
+						 * */
+
+						// Displays the Device Code login data on the UI
+						LoginDialogContentPage.CurrentlyDisplayedLoginPage.UpdateLoginData(deviceCodeResult.UserCode, deviceCodeResult.Message, deviceCodeResult.VerificationUrl);
+
 						return Task.FromResult(0);
 					}).ExecuteAsync();
 
-				Console.WriteLine(result.Account.Username);
+				Log.Info($"Login Result: {result.Account.Username}");
 				return result;
 			}
 
