@@ -5,21 +5,16 @@ namespace AIMTechToolkit.Controls
 	public sealed partial class LoginDialogContentPage : Page
 	{
 		private DispatcherQueue dispatcherQueue;
-
-		internal string LoginDeviceCode { get; set; } = "000000";
-		internal string LoginMessage { get; set; } = "";
-		internal string LoginButtonText { get; set; } = "Click Here to Login";
-		internal Uri LoginButtonUrl { get; set; } = new Uri(Constants.DeviceCodeLoginUrlGeneric);
-
-		internal static LoginDialogContentPage CurrentlyDisplayedLoginPage { get; set; }
+		public static LoginDialogContentPage Current;
 
 		public LoginDialogContentPage()
 		{
 			this.InitializeComponent();
 			dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+			Current = this;
 
-			App.InstanceLoginPage = this;
-			CurrentlyDisplayedLoginPage = this;
+			//App.InstanceLoginPage = this;
+			//CurrentlyDisplayedLoginPage = this;
 		}
 
 		private async void loginDialogContentPage1_Loaded(object sender, RoutedEventArgs e)
@@ -28,14 +23,14 @@ namespace AIMTechToolkit.Controls
 			if (_authResult is not null)
 			{
 				Log.Info("Login was successful!");
-				App.InstanceMainWindow.ShowNotification("Success", "You successfully logged into your Microsoft account!");
+				MainWindow.Current.NotifyUser("Success", "You successfully logged into your Microsoft account!");
 				NavigationService.Navigate(typeof(HomePage), HomePage.PageHeader);
 				MicrosoftLoginService.SetAuthenticatedUser(_authResult);
-				await App.InstanceMainWindow.UpdateUserProfilePicture();
+				// await App.InstanceMainWindow.UpdateUserProfilePicture();
 			}
 		}
 
-		internal void UpdateLoginData(string _code, string _message, string _url)
+		internal void PopulateDeviceCodeLoginData(string _code, string _message, string _url)
 		{
 			// Ensure UI updates are done on the UI thread
 			dispatcherQueue.TryEnqueue(() =>

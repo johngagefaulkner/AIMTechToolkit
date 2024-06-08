@@ -11,7 +11,8 @@ namespace AIMTechToolkit.Pages
 
 		private void testBtn1_Click(object sender, RoutedEventArgs e)
 		{
-			
+			localAppDataTextBlock1.Text = Services.AppDataService.GetLocalAppDataPath();
+			roamingAppDataTextBlock1.Text = Services.AppDataService.GetRoamingAppDataPath();
 		}
 	}
 }

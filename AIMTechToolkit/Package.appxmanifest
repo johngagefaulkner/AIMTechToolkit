@@ -11,14 +11,14 @@
 	<Identity
 	  Name="AIMTechToolkit"
 	  Publisher="CN=John Gage Faulkner, O=John Gage Faulkner, L=Barnesville, S=Georgia, C=US"
-	  Version="1.0.0.0" />
+	  Version="1.2.1.0" />
 
 	<mp:PhoneIdentity PhoneProductId="e1f8e58f-09c5-46ad-8cc8-8b0abfbea1eb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
 	<Properties>
 		<DisplayName>AIMTechToolkit</DisplayName>
 		<PublisherDisplayName>Gage Faulkner</PublisherDisplayName>
-		<Logo>Assets\StoreLogo.png</Logo>
+		<Logo>Assets\Icons\AIMTechToolkit-Logo.png</Logo>
 		<!-- Disable all virtualization for Centennial apps. -->
 		<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>
 		<desktop6:RegistryWriteVirtualization>disabled</desktop6:RegistryWriteVirtualization>
@@ -43,7 +43,11 @@
 			  BackgroundColor="transparent"
 			  Square150x150Logo="Assets\Square150x150Logo.png"
 			  Square44x44Logo="Assets\Square44x44Logo.png">
-				<uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  ShortName="AIM Toolkit" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
+				<uap:DefaultTile
+					Wide310x150Logo="Assets\Wide310x150Logo.png"
+					ShortName="AIM Toolkit"
+					Square71x71Logo="Assets\SmallTile.png"
+					Square310x310Logo="Assets\LargeTile.png"/>
 				<uap:SplashScreen Image="Assets\SplashScreen.png" />
 			</uap:VisualElements>
 		</Application>
@@ -52,5 +56,6 @@
 	<Capabilities>
 		<rescap:Capability Name="runFullTrust" />
 		<rescap:Capability Name="unvirtualizedResources" />
+		<rescap:Capability Name="packageManagement" />
 	</Capabilities>
 </Package>

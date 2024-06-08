@@ -96,9 +96,7 @@ namespace AIMTechToolkit.Services.Auth
 						// * The developing application calls the Cancel() method on a CancellationToken sent into the method.
 						//   If this occurs, an OperationCanceledException will be thrown (see catch below for more details).
 						// Console.WriteLine(deviceCodeResult.Message);
-						App.InstanceLoginPage.LoginDeviceCode = deviceCodeResult.UserCode;
-						App.InstanceLoginPage.LoginMessage = deviceCodeResult.Message;
-						App.InstanceLoginPage.LoginButtonUrl = new Uri(deviceCodeResult.VerificationUrl);
+						LoginDialogContentPage.Current.PopulateDeviceCodeLoginData(deviceCodeResult.UserCode, deviceCodeResult.Message, deviceCodeResult.VerificationUrl.ToString());
 						Log.Info($"[Services.Auth.AuthWithDeviceCodeService.cs | AcquireByDeviceCodeAsync()] Device Code: {deviceCodeResult.UserCode}");
 						return Task.FromResult(0);
 					}).ExecuteAsync();

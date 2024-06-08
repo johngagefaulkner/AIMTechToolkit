@@ -29,7 +29,6 @@
 			Background="Transparent">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
@@ -53,15 +52,6 @@
 				Text="{x:Bind Title}"
 				TextTrimming="None"
 				TextWrapping="NoWrap" />
-			<Button
-				x:Name="AppTitleBarLoginBtn1"
-				Grid.Column="2"
-				MaxWidth="160"
-				Margin="0"
-				HorizontalAlignment="Right"
-				Click="AppTitleBarLoginBtn1_Click"
-				Content="Not Logged In"
-				Foreground="White" />
 		</Grid>
 
 		<Grid
@@ -118,14 +108,17 @@
 						SelectsOnInvoked="False"
 						Tag="Login">
 						<NavigationViewItem.Icon>
-							<ImageIcon x:Name="accountNavItemIcon1" Source="ms-appx:///Assets/Icons/microsoft.accountpicker.aad.svg" />
+							<ImageIcon
+								x:Name="accountNavItemIcon1"
+								Foreground="White"
+								Source="ms-appx:///Assets/Icons/SignIn.svg" />
 						</NavigationViewItem.Icon>
 					</NavigationViewItem>
 					<NavigationViewItemSeparator />
 				</NavigationView.FooterMenuItems>
 			</NavigationView>
 			<InfoBar
-				x:Name="AppTitleBarInfoBar1"
+				x:Name="AppInfoBar1"
 				Title="Information"
 				Margin="40,0,40,24"
 				HorizontalAlignment="Center"

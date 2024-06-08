@@ -1,12 +1,12 @@
-using System.Linq.Expressions;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Windows.System;
+using Microsoft.Graph.Models;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AIMTechToolkit
 {
 	public sealed partial class MainWindow : Window
 	{
-		internal static MainWindow InstanceMainWindow { get; private set; }
+		//public static MainWindow Current { get; private set; }
+		public static new MainWindow Current { get; private set; }
 
 		public MainWindow()
 		{
@@ -16,17 +16,13 @@ namespace AIMTechToolkit
 			this.SetTitleBar(AppTitleBar1);
 			this.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
 			this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-
-			InstanceMainWindow = this;
+			Current = this;
 			Log.Info("MainWindow activated.");
-			NavigationService.InstanceNavView = navigationView1;
-			NavigationService.InstanceContentFrame = AppContentFrame1;
 
 			// Set the initial content
+			NavigationService.InstanceNavView = navigationView1;
+			NavigationService.InstanceContentFrame = AppContentFrame1;
 			NavigationService.Navigate(typeof(HomePage), HomePage.PageHeader);
-
-			// Handle User Login Button
-			AppTitleBarLoginBtn1.Margin = new Thickness(0, 0, this.AppWindow.TitleBar.RightInset, 0);
 		}
 
 		private async void navigationView1_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -42,6 +38,7 @@ namespace AIMTechToolkit
 				{
 					NavigationViewItem item = args.InvokedItemContainer as NavigationViewItem;
 					string pageName = item.Tag.ToString();
+
 					if (!string.IsNullOrEmpty(pageName))
 					{
 						switch (pageName)
@@ -77,70 +74,30 @@ namespace AIMTechToolkit
 			}
 		}
 
-		private async void AppTitleBarLoginBtn1_Click(object sender, RoutedEventArgs e)
+		public void NotifyUser(string strMessage, string strTitle = "Information", InfoBarSeverity severity = InfoBarSeverity.Informational)
 		{
-			if (AppTitleBarLoginBtn1.Content is string strContent)
+			// If called from the UI thread, then update immediately.
+			// Otherwise, schedule a task on the UI thread to perform the update.
+			if (DispatcherQueue.HasThreadAccess)
 			{
-				if (strContent == "Login")
-				{
-					await DialogService.ShowDialogAsync("Login", "Please login to your Microsoft 365 account.");
-				}
+				UpdateStatus(strMessage, strTitle, severity);
 			}
-
-			if (AppTitleBarLoginBtn1.Content is PersonPicture userProfilePicture)
+			else
 			{
-				await DialogService.ShowDialogAsync("User Profile", "Please see your account details!");
+				DispatcherQueue.TryEnqueue(() =>
+				{
+					UpdateStatus(strMessage, strTitle, severity);
+				});
 			}
 		}
 
-		internal void ShowNotification(string title, string message, InfoBarSeverity severity = InfoBarSeverity.Informational)
+		private void UpdateStatus(string strMessage, string strTitle, InfoBarSeverity severity)
 		{
-			AppTitleBarInfoBar1.IsOpen = false;
-
-			AppTitleBarInfoBar1.Severity = severity;
-			AppTitleBarInfoBar1.Title = title;
-			AppTitleBarInfoBar1.Message = message;
-
-			AppTitleBarInfoBar1.IsOpen = true;
-		}
-
-		internal void SetTitleBarButtonContent(string content)
-		{
-			AppTitleBarLoginBtn1.Content = content;
-		}
-
-		internal async Task UpdateUserProfilePicture()
-		{
-			if (MicrosoftLoginService.IsUserLoggedIn)
-			{
-				try
-				{
-					var loggedInUserId = MicrosoftLoginService.GetAuthenticatedUser().UniqueId;
-
-					var stream = await MicrosoftGraphAPIService.GetUserPhotoAsStreamAsync(loggedInUserId);
-					var bitmapImage = new BitmapImage();
-					bitmapImage.SetSource(stream);
-
-					accountNavItemIcon1.Source = bitmapImage;
-					accountNavItem1.Content = MicrosoftLoginService.GetAuthenticatedUser().Account.Username;
-
-					var userProfilePicture = new PersonPicture
-					{
-						DisplayName = "User's Full Name",
-						ProfilePicture = bitmapImage
-					};
-
-					userProfilePicture.MaxHeight = 32;
-					userProfilePicture.MaxWidth = 160;
-					AppTitleBarLoginBtn1.Content = userProfilePicture;
-				}
-
-				catch (Exception ex)
-				{
-					Log.Error(ex, "Failed to update user's profile picture!");
-					return;
-				}
-			}
+			AppInfoBar1.IsOpen = false;
+			AppInfoBar1.Title =	strTitle;
+			AppInfoBar1.Message = strMessage;
+			AppInfoBar1.Severity = severity;
+			AppInfoBar1.IsOpen = true;
 		}
 	}
 }

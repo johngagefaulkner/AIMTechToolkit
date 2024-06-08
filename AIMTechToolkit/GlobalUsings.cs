@@ -24,6 +24,7 @@ global using Microsoft.UI.Xaml;
 global using Microsoft.UI.Xaml.Controls;
 global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Media.Animation;
+global using Microsoft.UI.Xaml.Media.Imaging;
 global using AIMTechToolkit;
 global using AIMTechToolkit.Common;
 global using AIMTechToolkit.Controls;

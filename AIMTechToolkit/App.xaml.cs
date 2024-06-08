@@ -25,6 +25,5 @@ namespace AIMTechToolkit
 		public static Window InstanceWindow => m_window;
 		public static AppWindow InstanceAppWindow => m_window.AppWindow;
 		public static MainWindow InstanceMainWindow => m_window as MainWindow;
-		public static LoginDialogContentPage InstanceLoginPage { get; set; }
 	}
 }

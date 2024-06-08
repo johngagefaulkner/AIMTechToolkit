@@ -12,70 +12,114 @@
 
 	<Grid>
 		<ScrollViewer>
-			<StackPanel Orientation="Vertical" Spacing="4" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+			<StackPanel
+				HorizontalAlignment="Left"
+				VerticalAlignment="Stretch"
+				Orientation="Vertical"
+				Spacing="4">
+				<Image
+					Width="400"
+					Margin="4"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Source="https://svgur.com/i/16wp.svg" />
 				<Button
 					x:Name="testBtn1"
 					Margin="4"
 					Click="testBtn1_Click"
-					Content="Test Button 1" />
+					Content="Get AppData Paths" />
 				<Grid
-					Width="400"
-					Height="300"
+					Width="360"
+					Height="140"
 					Padding="12"
 					Background="{ThemeResource SmokeFillColorDefaultBrush}"
 					CornerRadius="8">
-					<StackPanel Orientation="Vertical" Spacing="4">
+					<Image
+						Width="96"
+						Height="96"
+						Margin="12,0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Center"
+						Source="https://svgur.com/i/16xW.svg" />
+					<StackPanel
+						HorizontalAlignment="Right"
+						Orientation="Vertical"
+						Spacing="4">
 						<TextBlock
-							Foreground="White"
-							Style="{ThemeResource HeaderTextBlockStyle}"
-							Text="Header" />
-						<TextBlock
+							HorizontalAlignment="Right"
 							Foreground="White"
 							Style="{ThemeResource SubheaderTextBlockStyle}"
-							Text="Subheader" />
+							Text="Local AppData" />
+						<TextBlock
+							x:Name="localAppDataTextBlock1"
+							HorizontalAlignment="Right"
+							Foreground="White"
+							Style="{ThemeResource CaptionTextBlockStyle}"
+							Text="Caption" />
 					</StackPanel>
 				</Grid>
 				<Grid
-					Width="400"
-					Height="300"
+					Width="360"
+					Height="140"
 					Padding="12"
-					Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+					Background="{ThemeResource SmokeFillColorDefaultBrush}"
 					CornerRadius="8">
-					<StackPanel Orientation="Vertical" Spacing="4">
+					<Image
+						Width="92"
+						Height="92"
+						Margin="12,0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Center"
+						Source="https://svgur.com/i/16yi.svg" />
+					<StackPanel
+						Margin="0,0,12,0"
+						HorizontalAlignment="Right"
+						Orientation="Vertical"
+						Spacing="4">
 						<TextBlock
+							HorizontalAlignment="Right"
 							Foreground="White"
-							Style="{ThemeResource TitleLargeTextBlockStyle}"
-							Text="Title (L)" />
+							Style="{ThemeResource BodyStrongTextBlockStyle}"
+							Text="Roaming AppData" />
 						<TextBlock
-							Foreground="White"
-							Style="{ThemeResource TitleTextBlockStyle}"
-							Text="Title" />
-						<TextBlock
+							x:Name="roamingAppDataTextBlock1"
+							HorizontalAlignment="Right"
+							FontWeight="Light"
 							Foreground="White"
 							Style="{ThemeResource SubtitleTextBlockStyle}"
-							Text="Subtitle" />
+							Text="Caption" />
 					</StackPanel>
 				</Grid>
 				<Grid
-					Width="400"
-					Height="300"
-					Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
-					CornerRadius="8" />
-				<Grid
-					Width="400"
-					Height="300"
-					Background="{ThemeResource ControlElevationBorderBrush}"
-					CornerRadius="8" />
-				<Grid
-					Width="400"
-					Height="300"
-					Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
-					CornerRadius="8" />
-				<Grid
-					Width="400"
-					Height="300"
-					Background="{ThemeResource ControlStrokeColorForStrongFillWhenOnImageBrush}"
-					CornerRadius="8" />
+					Width="360"
+					Height="140"
+					Padding="12"
+					Background="{ThemeResource SmokeFillColorDefaultBrush}"
+					CornerRadius="8">
+					<Image
+						Width="96"
+						Margin="12,0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Center"
+						Source="https://authjs.dev/img/providers/discord.svg" />
+					<StackPanel
+						Margin="0,0,12,0"
+						HorizontalAlignment="Right"
+						Orientation="Vertical"
+						Spacing="4">
+						<TextBlock
+							HorizontalAlignment="Right"
+							Foreground="White"
+							Style="{ThemeResource SubheaderTextBlockStyle}"
+							Text="Discord" />
+						<TextBlock
+							HorizontalAlignment="Right"
+							Foreground="White"
+							IsColorFontEnabled="True"
+							Style="{ThemeResource BodyStrongTextBlockStyle}"
+							Text=" ✅ Installed" />
+					</StackPanel>
+				</Grid>
 			</StackPanel>
 		</ScrollViewer>
 	</Grid>
